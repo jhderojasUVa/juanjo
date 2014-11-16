@@ -1,0 +1,173 @@
+/* Admin */
+
+#centrado {
+	width: 900px;
+	margin: 0 auto;
+	font: 14px Arial;
+}
+
+#centrado #vertical {
+	width: 350px;
+	height: 190px;
+	background-color: #e1e1e1;
+	border: 1px solid #818181;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px #333;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -175px;
+	padding: 7px;
+}
+
+#centrado #vertical form p.texto {
+	font: 24px Jura, Arial;
+	color: white;
+	padding: 2px 5px;
+	margin: 0 0 10px;
+	background-color: white;
+	color: black;
+	text-transform: uppercase;
+	text-align: right;
+}
+
+#centrado #vertical input[type="text"], #centrado #vertical input[type="password"] {
+	width: 300px;
+	height: 30px;
+	font: 20px Jura;
+	padding: 5px 12px;
+}
+
+input[type="text"] {
+	height: 30px;
+	font: 20px Jura;
+	padding: 5px 12px;
+}
+
+#centrado #vertical input[type="submit"] {
+	width: 325px;
+	font: 24px Jura, Arial;
+	padding: 4px 12px;
+	border: 1px solid #9c9c9c;
+}
+
+#centrado #error {
+	text-align: center;
+	font: 30px Jura, Arial;
+	width: 350px;
+	height: 50px;
+	background-color: #ffaeac;
+	border: 1px solid #674444;
+	padding: 5px 10px;
+}
+
+#centrado #contenido {
+	margin-top: 80px;
+	background-color: white;
+	padding:10px;
+}
+
+#centrado #menu_interior {
+	width: 880px;
+	height: 26px;
+	text-align: center;
+	background-color: black;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#centrado #sub_menu_interior {
+	width: 880px;
+	height: 26px;
+	text-align: center;
+	background-color: #656565;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#centrado #menu_interior ul, #centrado #sub_menu_interior ul {
+	margin: 0;
+	padding: 0;
+}
+
+#centrado #menu_interior ul li, #centrado #sub_menu_interior ul li {
+	font: 24px Jura;
+	color: white;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	list-style-type: none;
+}
+
+#centrado #menu_interior ul li a, #centrado #sub_menu_interior ul li a {
+	padding: 2px 5px;
+	background-color: white;
+	color: black;
+	text-decoration: none;
+}
+
+#centrado #menu_interior ul li:hover a:hover, #centrado #sub_menu_interior ul li:hover a:hover {
+	background-color: #d59d48;
+	border: none;
+}
+
+#centrado h1 {
+	background-color: black;
+	
+}
+
+#centrado h1 span.titulo {
+	font: 24px Jura, Arial;
+	color: white;
+	padding: 2px 5px;
+	background-color: white;
+	color: black;
+	text-transform: uppercase;
+	text-align: right;
+}
+
+.boton {
+	font: 18px Jura;
+	color: white;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	list-style-type: none;
+}
+
+.boton:hover a:hover {
+	color: white;
+	background-color: #7ea701;
+	text-decoration: none;
+	border: none;
+}
+
+.boton_form {
+	width: 320px;
+	font: 18px Jura;
+	color: #7ea701;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: #d0e7a9;
+	border: 2px solid #7ea701;
+}
+
+iframe.menu {
+	margin-top: 8px;
+	margin-right: 3px;
+	width: 437px;
+	height: 630px;
+	float: left;
+}
+
+.clear {
+	clear: both;
+	float: none;
+}
