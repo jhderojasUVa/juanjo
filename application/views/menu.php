@@ -55,8 +55,8 @@ html {
             <? } ?>
             	<td class="fondo">
 					<?=$row -> plato?>
-                    <? if ($row -> descripcion !="") { ?>
-                    	<br/><?=$row -> descripcion?>
+                    <? if ($row -> descripcion_plato !="") { ?>
+                    	(<?=$row -> descripcion_plato?>)
                     <? } ?>
                 </td>
             </tr>

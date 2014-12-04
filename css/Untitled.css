@@ -1,0 +1,113 @@
+/* Estilos de la Lista */
+@import url(http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Slab);
+
+.blog {
+	/* Generico del bloque */
+	margin-bottom: 5px;
+	font: 12px Arial;
+}
+
+/* Estandar sin configuracion
+
+	AKA: clasico
+	
+*/
+.blog h3 {
+	/* Titulo de la lista */
+	font: bold 14px Arial;
+	color: #005078;
+	background-color: #eaf6fd;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-bottom: 4px;
+	border-bottom: 1px solid #c5c5c5;
+}
+
+.blog div.resultado {
+	/* Generico bloque resultados */
+	padding: 0;
+	margin: 0;
+}
+
+.blog dl, .blog dd {
+	/* Elemento resultados */
+	padding: 0;
+	margin: 0;
+}
+
+.blog dd p {
+	/* Parrafos resultados */
+	margin: 0;
+	color: #666;
+}
+
+.blog dd p i small {
+	/* Fecha resultados */
+	color: #686868;
+}
+
+.blog dl h4 {
+	/* Titulo en elemento resultado */
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+/* Nuevo estilo 
+
+	AKA: Nuevo estilo
+*/
+.blog.nuevo h3 {
+	/* Titulo de la lista */
+	font: small-caps bold 14px 'Roboto', sans-serif;
+	color: #162a3d;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-bottom: 4px;
+	background-color: #e4e4e4;
+	border: 1px solid #b3b2b4;
+
+}
+
+.blog.nuevo div.resultado {
+	/* Generico bloque resultados */
+	padding: 0 0 2px;
+	margin: 0 0 2px;
+	border-bottom: 1px dotted #b3b2b4;
+}
+
+.blog.nuevo dl, .blog.nuevo dd {
+	/* Elemento resultados */
+	padding: 0;
+	margin: 0;
+}
+
+.blog.nuevo dd p {
+	/* Parrafos resultados */
+	margin: 0;
+	color: #666;
+}
+
+.blog.nuevo dd p i small {
+	/* Fecha resultados */
+	color: #686868;
+}
+
+.blog.nuevo dl h4 {
+	/* Titulo en elemento resultado */
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+/* Estandar para todos */
+.blog a.paginacion {
+	/* Paginacion */
+	border: 1px solid #d0d0d0;
+	padding-left:4px;
+	padding-right:4px;
+	padding-top:2px;
+	padding-bottom:2px;
+}

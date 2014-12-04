@@ -43,11 +43,15 @@ html {
 	    <? if ($opcion==0) { ?>
 		    <? if (isset($menu_hoy) && count($menu_hoy)!=0) { ?>
 		    <p><strong>Menu del d&iacute;a de hoy</strong></p>
-		    	<table width="550">
+		    	<table width="100%">
 		    	<? foreach ($menu_hoy as $row) { ?>
 		    			<tr>
-			    			<td width="100">De <?=$row -> posicion?></td>
+			    			<td width="100">De <?=$row -> orden?></td>
 			    			<td><?=$row -> plato?></td>
+			    			<td><?=$row -> descripcion_plato ?></td>
+			    			<td>Hidratos: <?=$row -> hidratos ?></td>
+			    			<td>Calorias: <?=$row -> calorias ?></td>
+			    			<td>Vegetariano: <? if ($row -> vegetariano == true) {?>SI<? } else {?>NO<? } ?></td>
 		    			</tr>
 		    	<? } ?>
 		    	</table>

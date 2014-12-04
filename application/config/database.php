@@ -51,7 +51,7 @@ $active_record = TRUE;
 // Datos para la BD de pruebas
 $db['test']['hostname'] = '127.0.0.1';
 $db['test']['username'] = 'juanjo';
-$db['test']['password'] = '';
+$db['test']['password'] = 'cacafuti';
 $db['test']['database'] = 'juanjo';
 $db['test']['dbdriver'] = 'mysql';
 $db['test']['dbprefix'] = '';
@@ -68,7 +68,7 @@ $db['test']['stricton'] = FALSE;
 // Datos para la BD de explotacion
 $db['explotacion']['hostname'] = 'localhost';
 $db['explotacion']['username'] = 'root';
-$db['explotacion']['password'] = '';
+$db['explotacion']['password'] = 'enterf5';
 $db['explotacion']['database'] = 'juanjo';
 $db['explotacion']['dbdriver'] = 'mysql';
 $db['explotacion']['dbprefix'] = '';

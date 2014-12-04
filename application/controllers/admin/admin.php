@@ -73,7 +73,7 @@ class Admin extends CI_Controller {
 	/* Acciones para PLATOS
 	/*
 	*/
-	/* ACTUALMENTE DEJADO DE USAR
+	
 	public function platos() {
 		// Pagina de platos
 		$datos["error"] = "";
@@ -100,7 +100,6 @@ class Admin extends CI_Controller {
 			$this -> load -> view("admin/login", $datos);
 		}
 	}
-	
 	
 	public function plato_add() {
 		// Pagina para añadir platos
@@ -192,7 +191,6 @@ class Admin extends CI_Controller {
 			$this -> load -> view("admin/login", $datos);
 		}
 	}
-	*/
 	
 	/*
 	/* Acciones para FRASES
@@ -330,6 +328,9 @@ class Admin extends CI_Controller {
 		$datos["opcion"] = 0;
 		// Cargamos la opcion
 		$datos["opcion"] = $this -> input -> get("opcion");
+		if (!$datos["opcion"]) {
+			$datos["opcion"]=0;
+		}
 		// Nos traemos la sesion
 		$logeado = $this -> session -> userdata("idu");
 		// Lo primero es ver si esta autentificado, sino, a la mierda que va
@@ -339,9 +340,8 @@ class Admin extends CI_Controller {
 			$datos["menu_hoy"] = $this -> menu -> ver_ultimo_menu();
 			$this -> load -> view("admin/menu",$datos);
 		} else if ($logeado==1 && $datos["opcion"]==1) {
-			echo "ENTRA";
 			// Quiere añadir un menu
-			$this -> load -> view("admin/menu_add",$datos);
+			$this -> load -> view("admin/menu_add", $datos);
 		} else if ($logeado==1 && $datos["opcion"]==2) {
 			// Quiere ver un menu
 			if (!isset($fecha)) {
@@ -359,9 +359,11 @@ class Admin extends CI_Controller {
 		// Necesario la fecha, obviamente
 		$datos["error"] = "";
 		$datos["opcion"] = 0;
+		$logeado = $this -> session -> userdata("idu");
 		if ($logeado==1) {
 			// Pillamos la fecha
-			$datos["fecha"] = $this -> input -> post("mes") . "-" . $this -> input -> post("dia") . "-" . $this -> input -> post("ano");
+			$datos["fecha"] = $this -> input -> post("ano") . "-" . $this -> input -> post("mes") . "-" . $this -> input -> post("dia");
+			$datos["menu"] = $this -> menu -> ver_menu($datos["fecha"]);
 			$this -> load ->  view("admin/menu_vista",$datos);
 		} else {
 			// No esta logeado
@@ -383,13 +385,13 @@ class Admin extends CI_Controller {
 			$descripcion_plato = $this -> input -> post("descripcion");
 			$orden = $this -> input -> post("posicion");
 			$hidratos = $this -> input -> post("hidratos");
-			$vegeraiano = $this -> input -> post("vegetariano");
+			$vegetariano = $this -> input -> post("vegetariano");
 			if ($vegetariano!=1) { $vegetariano=0; }
 			$calorias = $this -> input -> post("calorias");
-			$fecha = $this -> input -> post("mes")."-".$this -> input -> post("dia")."-".$this -> input -> post("ano");
+			$fecha = $this -> input -> post("ano")."-".$this -> input -> post("mes")."-".$this -> input -> post("dia");
 			if ($add==1) {
 				// BIEN
-				$this -> menu -> addplato_menu($plato, $descripcion_plato, $orden, $hidratos, $vegetariano, $calorias, $fecha);
+				$this -> menu -> add_platomenu($plato, $descripcion_plato, $orden, $hidratos, $vegetariano, $calorias, $fecha);
 				$this -> load -> view("admin/ok");
 			} else {
 				// NO!
@@ -403,19 +405,24 @@ class Admin extends CI_Controller {
 	public function menu_del() {
 		// Funcion para eliminar un menu concreto
 		// Lo primero es ver si esta autentificado, sino, a la mierda que va
-		if ($logeado==1 && $datos["opcion"]==0) {
+		$datos["error"] = "";
+		$datos["opcion"] = 0;
+		$logeado = $this -> session -> userdata("idu");
+		if ($logeado==1) {
 			// Pillamos el idplato
-			$idplato = $this -> input -> get("idplato");
-			$ok = $this -> input -> get("borrar");
+			$idplato = $this -> input -> get("id");
+			$ok = $this -> input -> get("ok");
 			$fecha = $this -> input -> get("fecha");
 			
 			$datos["fecha"]=$fecha;
 			if ($ok==1) {
+				// Eliminamos
 				$this -> menu -> del_platomenu($idplato);
-				$this -> load -> view("admin/menu_lista",$datos);
+				// Capturamos los datos para volver a sacar todo de forma correcta
+				$datos["menu"] = $this -> menu -> ver_menu($datos["fecha"]);
+				$datos["fecha"] = $fecha;
+				$this -> load -> view("admin/menu_vista",$datos);
 			}
-			// Si lo ha hecho mal... le devolvemos lo mismo
-			$this -> load -> view("admin/menu_lista",$datos);
 		} else {
 			// No esta logeado
 			$this -> load -> view("admin/login",$datos);
@@ -424,15 +431,24 @@ class Admin extends CI_Controller {
 	
 	public function menu_cambiar() {
 		// Funcion para cambiar un menu determinado
-		if ($logeado==1) {
+		// Lo primero es ver si esta autentificado, sino, a la mierda que va
+		$datos["error"] = "";
+		$datos["opcion"] = 0;
+		$logeado = $this -> session -> userdata("idu");
+		$enviado = 0;
+		if ($this -> input -> post("enviado")) {
+			$enviado = $this -> input -> post("enviado");
+		}
+		if ($logeado==1 && $enviado == 1) {
 			// Pillamos el idplato
 			$idplato = $this -> input -> post("idplato");
-			$ok = $this -> input -> post("modificar");
+			$ok = $this -> input -> post("enviado");
+			//Pillamos los datos
 			$plato = $this -> input -> post("plato");
 			$descripcion_plato = $this -> input -> post("descripcion");
 			$orden = $this -> input -> post("posicion");
 			$hidratos = $this -> input -> post("hidratos");
-			$vegeraiano = $this -> input -> post("vegetariano");
+			$vegetariano = $this -> input -> post("vegetariano");
 			if ($vegetariano!=1) { $vegetariano=0; }
 			$calorias = $this -> input -> post("calorias");
 			$fecha = $this -> input -> post("fecha");
@@ -440,10 +456,17 @@ class Admin extends CI_Controller {
 			$datos["fecha"]=$fecha;
 			if ($ok==1) {
 				$this -> menu -> modifica_platomenu($idplato, $plato, $descripcion_plato, $orden, $hidratos, $vegetariano, $calorias, $fecha);
-				$this -> load -> view("admin/menu_lista",$datos);
+				$datos["menu"] = $this -> menu -> ver_menu($datos["fecha"]);
+				$this -> load -> view("admin/menu_vista",$datos);
 			}
-			// Si lo ha hecho mal... le devolvemos lo mismo
-			$this -> load -> view("admin/menu_lista",$datos);
+			
+		} else if ($logeado==1) {
+			// Cogemos el ID
+			$idplato = $this -> input -> get("id");
+			// Sacamos el contenido
+			$datos["plato"] = $this -> menu -> ver_plato_menu($idplato);
+			$datos["fecha"] = $this -> menu -> ver_fecha_plato($idplato);
+			$this -> load -> view("admin/menu_mod", $datos);
 		} else {
 			// No esta logeado
 			$this -> load -> view("admin/login",$datos);

@@ -51,17 +51,22 @@ html {
 					<td><input type="text" name="descripcion" placeholder="descripcion del plato" style="width:835px"/></td>
 				</tr>
 				<tr>
-					<td>Hidratos <input type="text" name="hidratos" placeholder="10" style="width:20px"/></td>
-					<td>Calorias <input type="text" name="calorias" placeholder="100" style="width:40px"/></td>
-					<td>Vegetariano <input type="checkbox" name="vegetariano" value="1" /></td>
+					<td width="80">
+					Hidratos <input type="text" name="hidratos" placeholder="10" style="width:30px"/>
+					&nbsp;&nbsp;&nbsp;
+					Calorias <input type="text" name="calorias" placeholder="100" style="width:40px"/>
+					&nbsp;&nbsp;&nbsp;
+					Vegetariano <input type="checkbox" name="vegetariano" value="1" />
+					</td>
 				</tr>
                 <tr>
 					<td>
                    	 Posici&oacute;n en el menu
-                     <select name="poscion">
-                     	<? for ($i=1;$i++;$i==3) { ?>
+                     <select name="posicion">
+                     	<? for ($i=1;$i<=3;$i++) { ?>
                         <option value="<?=$i?>"><?=$i?> plato</option>
                         <? } ?>
+                        
                      </select>
                     </td>
 				</tr>
@@ -69,7 +74,7 @@ html {
                 	<td>
                     Fecha
                     <select name="dia">
-                    	<? for ($i=1;$i++;$i==31) { ?>
+                    	<? for ($i=1;$i<=31;$i++) { ?>
                     		<? if ($i==date("d")) { ?>
                     			<option value="<?=$i?>" selected><?=$i?></option>
                     		<? } else { ?>
@@ -78,7 +83,7 @@ html {
                         <? } ?>
                     </select> / 
                     <select name="mes">
-                    	<? for ($i=1;$i++;$i==12) { ?>
+                    	<? for ($i=1;$i<=12;$i++) { ?>
                     		<? if ($i==date("m")) { ?>
                     			<option value="<?=$i?>" selected><?=$i?></option>
                     		<? } else { ?>
@@ -87,20 +92,20 @@ html {
                         <? } ?>
                     </select> / 
                     <select name="ano">
-                    	<? for ($i=(date("Y")-1);$i++;$i=(date("Y")+1)) { ?>
+                    	<? for ($i=(date("Y")-1);$i<=(date("Y")+1);$i++) { ?>
 	                        <? if ($i==date("Y")) { ?>
 	                    			<option value="<?=$i?>" selected><?=$i?></option>
 	                    		<? } else { ?>
 									<option value="<?=$i?>"><?=$i?></option>
 								<? } ?>
 	                        <? } ?>
-                    </select>
+                    </select>                   
                     </td>
                 </tr>
 				<tr>
 					<td colspan="5" align="center">
 						<input type="hidden" name="add" value="1" />
-						<input type="submit" name="enviar" value="añadir frase" class="boton_form"/>
+						<input type="submit" name="enviar" value="añadir plato" class="boton_form"/>
 					</td>
 				</tr>
 				</form>

@@ -40,24 +40,37 @@ html {
 	    </div>
 	    <div class="clear"></div>
 	    <!-- contenido -->
-	    <p>Rellene el siguiente formulario para insertar un plato en el menu. Por defecto, la fecha es la de hoy, pero puede modificarla si lo desea</p>
+	    <p>A continuaci&oacute; le aparece una lista con el menu de una fecha y/o las fechas para poder ver otros menus. Podrá modificar un plato, eliminarle, etc...</p>
 	    <br />
-	    <table width="100%" align="center">
-	    	<tr>
-	    		<td>Fecha</td>
-	    		<td>
-	    			<select name="dia">
-	    			</select>
-	    		</td>
-	    	</tr>
-	    </table>
+	    <? if (isset($menu)) { ?>
+	    	<table width="100%" align="center">
+	    		<th>
+	    			<td><strong>Orden</strong></td>
+	    			<td><strong>Plato</strong></td>
+	    			<td><strong>Descripci&oacute;n</strong></td>
+	    			<td><strong>Vegetariano</strong></td>
+	    			<td></td>
+	    		</th>
+	    	<? foreach ($menu as $row) { ?>
+	    		<tr>
+	    			<td></td>
+		    		<td><?=$row -> orden?></td>
+		    		<td><?=$row -> plato?></td>
+		    		<td><?=$row -> descripcion_plato?></td>
+		    		<td><? if ($row -> vegetariano == 1) { ?>SI<? } else {?>NO<? } ?></td>
+		    		<td><span class="boton"><a href="<?=base_url()?>index.php/admin/admin/menu_del?id=<?=$row -> idplato?>&ok=1&fecha=<?=$fecha?>">borrar</a></span> <span class="boton"><a href="<?=base_url()?>index.php/admin/admin/menu_cambiar?id=<?=$row -> idplato?>&fecha=<?=$fecha?>">modificar</a></span></td>
+	    		</tr>
+	    	<? } ?>
+	    	</table>
+	    <? } ?>
 		<table width="100%" align="center">
-				<form action="<?=base_url()?>index.php/admin/admin/menu_add" method="post" class="formulario"/>
+				<form action="<?=base_url()?>index.php/admin/admin/menu_vista" method="post" class="formulario"/>
+				<input type="hidden" name="ver_menu" value="1">
                 <tr>
                 	<td>
                     Fecha
                     <select name="dia">
-                    	<? for ($i=1;$i++;$i==31) { ?>
+                    	<? for ($i=1;$i<=31;$i++) { ?>
                     		<? if ($i==date("d")) { ?>
                     			<option value="<?=$i?>" selected><?=$i?></option>
                     		<? } else { ?>
@@ -66,7 +79,7 @@ html {
                         <? } ?>
                     </select> / 
                     <select name="mes">
-                    	<? for ($i=1;$i++;$i==12) { ?>
+                    	<? for ($i=1;$i<=12;$i++) { ?>
                     		<? if ($i==date("m")) { ?>
                     			<option value="<?=$i?>" selected><?=$i?></option>
                     		<? } else { ?>
@@ -75,7 +88,7 @@ html {
                         <? } ?>
                     </select> / 
                     <select name="ano">
-                    	<? for ($i=(date("Y")-1);$i++;$i=(date("Y")+1)) { ?>
+                    	<? for ($i=(date("Y")-1);$i<=(date("Y")+1);$i++) { ?>
 	                        <? if ($i==date("Y")) { ?>
 	                    			<option value="<?=$i?>" selected><?=$i?></option>
 	                    		<? } else { ?>
@@ -88,7 +101,7 @@ html {
 				<tr>
 					<td colspan="5" align="center">
 						<input type="hidden" name="add" value="1" />
-						<input type="submit" name="enviar" value="añadir frase" class="boton_form"/>
+						<input type="submit" name="enviar" value="Ver menu" class="boton_form"/>
 					</td>
 				</tr>
 				</form>
