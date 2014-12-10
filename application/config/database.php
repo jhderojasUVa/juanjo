@@ -65,22 +65,5 @@ $db['test']['swap_pre'] = '';
 $db['test']['autoinit'] = TRUE;
 $db['test']['stricton'] = FALSE;
 
-// Datos para la BD de explotacion
-$db['explotacion']['hostname'] = 'localhost';
-$db['explotacion']['username'] = 'root';
-$db['explotacion']['password'] = 'enterf5';
-$db['explotacion']['database'] = 'juanjo';
-$db['explotacion']['dbdriver'] = 'mysql';
-$db['explotacion']['dbprefix'] = '';
-$db['explotacion']['pconnect'] = TRUE;
-$db['explotacion']['db_debug'] = TRUE;
-$db['explotacion']['cache_on'] = FALSE;
-$db['explotacion']['cachedir'] = '';
-$db['explotacion']['char_set'] = 'utf8';
-$db['explotacion']['dbcollat'] = 'utf8_general_ci';
-$db['explotacion']['swap_pre'] = '';
-$db['explotacion']['autoinit'] = TRUE;
-$db['explotacion']['stricton'] = FALSE;
-
 /* End of file database.php */
 /* Location: ./application/config/database.php */

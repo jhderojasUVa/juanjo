@@ -392,7 +392,7 @@ class Admin extends CI_Controller {
 			if ($add==1) {
 				// BIEN
 				$this -> menu -> add_platomenu($plato, $descripcion_plato, $orden, $hidratos, $vegetariano, $calorias, $fecha);
-				$this -> load -> view("admin/ok");
+				$this -> load -> view("admin/menu");
 			} else {
 				// NO!
 			}
